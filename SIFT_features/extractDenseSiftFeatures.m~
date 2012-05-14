@@ -1,0 +1,40 @@
+function [ desc_pos, descriptors ] = getDenseSiftFeatures( datadir )
+%Extracted dense sift features of all the images in a given dir
+% frames is numOfImages * 2 * numOfSiftDescriptorsPerImage dimension array
+
+% Initialize vl_feat library paths
+run('~/research/packages/vlfeat-0.9.14/toolbox/vl_setup')
+datadir = '../data/saiaprtc12ok.part1/benchmark/saiapr_tc-12/';
+
+stepSize = 10;
+binSize = 8;
+magnif = 3;
+
+subdir = dir(datadir);
+
+for i=1:numel(subdir)
+   if(~strcmp(subdir(i).name,'.') && ~strcmp(subdir(i).name,'..') && isdir([datadir subdir(i).name]))
+      currSubDir = [datadir subdir(i).name '/images/'];      
+      imgfiles = dir(currSubDir);
+      for j=1:numel(imgfiles)
+          file = [currSubDir imgfiles(j).name];
+        if(~isdir(file))
+            %Extract sift features for an image
+            [desc_pos, descriptor] = get_dsift(file);
+        end
+      end
+   end
+end
+
+end
+
+function [desc_pos, desc] = get_dsift(imgpath)    
+    img = single(rgb2gray(imread(imgpath)));
+    %smoo
+    img=vl_imsmooth(img, sqrt((binSize/magnif)^2 -.25));    
+    [desc_pos(i), desc(i)] =vl_dsift(imgS, 'step',stepSize);
+end
+
+
+end
+

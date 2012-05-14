@@ -1,0 +1,34 @@
+Model 1 discrete ML
+model1discrete_train
+model1discrete_write
+model1discrete_trans
+
+Model 1 discrete ML online
+model1discreteOnline_train
+model1discrete_write
+model1discrete_trans
+
+Model 1 Gaussian ML
+model1gaussML_train
+model1gaussML_write
+model1gaussML_trans
+
+Model 1 Gaussian ML online
+model1gaussMLOnline_train
+model1gaussML_write
+model1gaussML_trans
+
+Model 1 Gaussian MAP
+model1gaussMAP_train
+model1gaussMAP_write
+model1gaussML_trans
+
+Model 1 MRF Gaussian ML
+model1MRFgaussML_train
+model1MRFgaussML_write
+model1MRFgaussML_trans
+
+Model 1 MRF Gaussian MAP
+model1MRFgaussMAP_train
+model1MRFgaussMAP_write
+model1MRFgaussMAP_trans

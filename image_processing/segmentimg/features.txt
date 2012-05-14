@@ -1,0 +1,15 @@
+"area"                 1  compute_feature_area
+"width,height"         2  compute_feature_wh
+"mean x,y"             2  compute_feature_posavg
+"stddev x,y"           2  compute_feature_posstd
+"boundary/area"        1  compute_feature_bndarea
+"convexity"            1  compute_feature_convexity
+"average RGB"          3  compute_feature_rgbavg
+"stddev RGB"           3  compute_feature_rgbstd
+"skewness RGB"         3  compute_feature_rgbskew
+"average Lab"          3  compute_feature_labavg
+"stddev Lab"           3  compute_feature_labstd
+"skewness Lab"         3  compute_feature_labskew
+
+
+

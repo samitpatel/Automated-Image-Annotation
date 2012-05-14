@@ -1,0 +1,1 @@
+These files were used to segment the images using Normalized cut algorithms and extract the feature vector for feature set 1

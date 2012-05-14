@@ -1,0 +1,33 @@
+%set datadir
+%set maskpath
+
+% Initialize vl_feat library paths
+run('~/research/packages/vlfeat-0.9.14/toolbox/vl_setup')
+
+datadir = '../data/saiaprtc12ok.part1/benchmark/saiapr_tc-12/';
+subdir = dir(datadir);
+
+for i=1:numel(subdir)
+   if(~strcmp(subdir(i).name,'.') && ~strcmp(subdir(i).name,'..') && isdir([datadir subdir(i).name]))
+      currSubDir = [datadir subdir(i).name '/images/'];      
+      imgfiles = dir(currSubDir);
+      for j=1:numel(imgfiles)
+          file = [currSubDir imgfiles(j).name];
+        if(~isdir(file))
+            load (file);
+            [path filename ext] = fileparts(file);
+            img = imread(file);
+
+        end
+      end
+   end
+end
+
+
+
+
+
+%Extract sift features for all images
+[desc_pos, descriptor] = extractDenseSiftFeatures(datadir);
+
+

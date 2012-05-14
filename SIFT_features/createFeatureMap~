@@ -1,0 +1,33 @@
+
+
+for imgid=1:numel(segmentedImg)
+   if(~isempty(segmentedImg{imgid}))
+       uniq_seg_nos = unique(segmentedImg);        
+       if(uni_seg_nos(1)==0)
+            numOfSegments = numel(uni_seg_nos)-1;
+       else
+            numOfSegments = numel(uni_seg_nos);
+       end
+       
+       regionDescSet = cell(1,numOfSegments);
+
+       for j=1:size(descriptor{imgid},1)
+          x = floor(desc_pos{imgid}(j,1));
+          y = floor(desc_pos{imgid}(j,2));
+          
+          regionDescSet{segmentedImg{imgid}(y,x)} = ...
+              [regionDescSet{segmentedImg{imgid}(y,x)}; descriptor{imgid}(j,:)];
+       end
+
+       for j=1:numOfSegments
+          histFeature = compute_frequency_histogram(regionDescSet{j},centres);
+          featureSet = [featureSet; histFeature];
+          %TODO implement getlabel
+          labelSet = [labelSet; getlabel(imgid,j)];
+       end       
+   end
+end
+
+
+
+
